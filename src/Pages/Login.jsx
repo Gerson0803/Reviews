@@ -1,22 +1,40 @@
-
-import { Link } from 'react-router-dom';
-import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./Styles/Login.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleLogin = (e) => {
+  const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "1234") {
-      setMessage("✅ Inicio de sesión exitoso.");
+    console.log("si", username, password);
+    const response = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: username,
+        password: password,
+      }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setMessage(true);
     } else {
-      setMessage("❌ Usuario o contraseña incorrectos.");
+      setMessage(false);
     }
   };
 
+  useEffect(() => {
+    if (message) {
+      navigate("/menu");
+    } else if (message === false) {
+      alert("Error: Usuario o contraseña incorrectos.");
+    }
+  }, [message]);
   return (
     <div className="login-container">
       <div className="login-card fade-in">
@@ -45,7 +63,7 @@ export default function Login() {
         <form onSubmit={handleLogin} className="login-form">
           <input
             type="text"
-            placeholder="Usuario"
+            placeholder="Email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -62,13 +80,29 @@ export default function Login() {
           <button type="submit">Iniciar sesión</button>
         </form>
 
-        <a href="#!" className="forgot-password">
-          ¿Olvidaste tu contraseña?
-        </a>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "1rem",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <a href="#!" className="forgot-password">
+            ¿Olvidaste tu contraseña?
+          </a>
 
-        {message && <p className="login-message">{message}</p>}
+          <a
+            onClick={() => {
+              navigate("/signUp");
+            }}
+            className="forgot-password"
+          >
+            Crear una cuenta
+          </a>
+        </div>
       </div>
-      
     </div>
   );
 }

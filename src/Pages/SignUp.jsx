@@ -52,9 +52,8 @@ export default function SignUp() {
       throw new Error("Error en el registro");
     }
 
-    const data = await response.json();
-    alert(`Usuario ${data.name} registrado con éxito.`);
-    console.log("Respuesta del backend:", data);
+    alert(`Usuario ${form.name} registrado con éxito.`);
+    console.log("Respuesta del backend:", form);
 
     navigate("/menu");
 

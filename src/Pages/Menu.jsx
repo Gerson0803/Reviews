@@ -194,7 +194,7 @@ function Menu() {
       <header className="navbar">
         <div className="navbar-left">
           <span className="logo">
-            <FaPen className="logo-icon" /> StyleShop
+            <FaPen className="logo-icon" /> Review
           </span>
         </div>
         <div className="navbar-center">
