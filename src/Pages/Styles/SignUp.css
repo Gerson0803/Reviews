@@ -1,0 +1,157 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f1419, #1a1f25);
+  font-family: "Segoe UI", sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.book {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  perspective: 2000px;
+}
+
+
+.page {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  transition: transform 1s ease;
+}
+
+
+.page.left {
+  background-color: #1da1f2;
+  padding-top: 125px;
+  text-align: center;
+  z-index: 2;
+}
+.page.left.moved {
+  background: linear-gradient(135deg, #0f1419, #1a1f25);
+  color: #fff;
+  transform: translateX(-50%);
+}
+.page.left h2 {
+  color: #1da1f2;
+}
+
+
+.page.right {
+  background-color: rgba(21, 32, 43, 0.95);
+   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  transform: translateX(0%);
+  opacity: 0;
+  z-index: 1;
+}
+.page.right.show {
+  transform: translateX(50%);
+  opacity: 1;
+}
+
+.page.right h2 {
+    padding-bottom: 30px;
+}
+
+
+.welcome-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.welcome-text {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.open-btn {
+  background-color: #fff;
+  color: #1da1f2;
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+.open-btn:hover {
+  transform: scale(1.05);
+}
+
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.signup-form input {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 30px;
+  background-color: #192734;
+  color: #fff;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.signup-form input:focus {
+  background-color: #22303c;
+  box-shadow: 0 0 0 2px #1da1f2;
+}
+.signup-form button {
+  margin: 2px auto;
+  width: 200px;
+  background-color: #1da1f2;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+.signup-form button:hover {
+  background-color: #1480b6;
+  transform: scale(1.05);
+}
+
+.google-btn {
+  display: block;   
+  margin: 2px auto;
+  width: 200px;
+  margin-top: 1rem;
+
+  color: #fff;
+
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+.google-btn:hover {
+  transform: scale(1.05);
+}
+
+.lefty {
+    padding-top: 50px;
+}
+
+.login-prompt {
+  margin-top: 20px;
+}
+
+.login-link {
+  display: block;
+  margin: 2px, auto;
+  color: #1da1f2;
+  cursor: pointer;
+  text-decoration: underline;
+}
