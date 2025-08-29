@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Styles/SignUp.css";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [openBook, setOpenBook] = useState(false);
@@ -11,10 +12,11 @@ export default function SignUp() {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate();
+
   const handleGoogleSuccess = (credentialResponse) => {
-    // Aquí puedes enviar el token a tu backend o manejar el login
     alert("Inicio de sesión con Google exitoso");
-    // console.log(credentialResponse);
+      navigate("/menu");
   };
 
   const handleGoogleError = () => {
@@ -54,8 +56,7 @@ export default function SignUp() {
     alert(`Usuario ${data.name} registrado con éxito.`);
     console.log("Respuesta del backend:", data);
 
-    // Si quieres redirigir al login después de registrarse
-    // window.location.href = "/login";
+    navigate("/menu");
 
   } catch (error) {
     console.error("Error:", error);
